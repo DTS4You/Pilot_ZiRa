@@ -23,17 +23,17 @@ IO-Belegung:
 
 J301 -> I 0.0	-> Taster vorne 			-> Schliesser
 J302 -> I 0.1	-> Taster vorne 			-> Öffner
-J303 -> I 0.2	-> Reed-Kontakt				-> Position Grüne
-J304 -> I 0.3	-> Reed-Kontakt				-> Position Rot
-J305 -> I 0.4
-J306 -> I 0.5
+J303 -> I 0.2	-> Taster hinten			-> Schliesser
+J304 -> I 0.3	-> Taster hinten			-> Öffner
+J305 -> I 0.4	-> Reed-Kontakt				-> Position Grüne
+J306 -> I 0.5	-> Reed-Kontakt				-> Position Rot
 J307 -> I 0.6
 J308 -> I 0.7
 
-J301 -> Q 0.0	-> Taster LED				-> Grüne LED
-J302 -> Q 0.1	-> Taster LED				-> Rote LED
-J303 -> Q 0.2
-J304 -> Q 0.3
+J301 -> Q 0.0	-> Taster LED vorne			-> Grüne LED
+J302 -> Q 0.1	-> Taster LED vorne			-> Rote LED
+J303 -> Q 0.2	-> Taster LED hinten		-> Grüne LED
+J304 -> Q 0.3	-> Taster LED vorne			-> Rote LED
 J305 -> Q 0.4
 J306 -> Q 0.5
 J307 -> Q 0.6
