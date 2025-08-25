@@ -21,8 +21,8 @@ J408	-> LED-Stripe	-> Co2 Ausstoß Anzeige Balken
 
 IO-Belegung:
 
-J301 -> I 0.0	-> Taster Schalter			-> Schliesser
-J302 -> I 0.1	-> Taster Schalter			-> Öffner
+J301 -> I 0.0	-> Taster vorne 			-> Schliesser
+J302 -> I 0.1	-> Taster vorne 			-> Öffner
 J303 -> I 0.2	-> Reed-Kontakt				-> Position Grüne
 J304 -> I 0.3	-> Reed-Kontakt				-> Position Rot
 J305 -> I 0.4
