@@ -81,3 +81,12 @@ State:
         -> Timer Sequenz Ende abgelaufen
             -> Wenn Merker 1 an     -> Modul Grün
                 -> Animation "Grün" Stop
+                -> Rahmen grün blinken
+                -> Co2 Anzeige grün
+            -> Wenn Merker 1 aus    -> Modul Rot
+                -> Animation "Rot" Stop
+                -> Rahmen rot blinken
+                -> Co2 Anzeige rot
+            -> Timer 2 Sekunden starten
+
+    6   ## Tonausgane ; Tor auf / zu
