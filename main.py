@@ -55,6 +55,8 @@ if __name__ == "__main__":
         MyGPIO.i2c_write(0,True)
         time.sleep(0.5)
         MyGPIO.i2c_write(0,False)
+    else:
+        print("I2C_MCP23017 -> nicht vorhanden")
 
     if MyModule.inc_ws2812:
         print("WS2812 -> Load-Module")
@@ -68,6 +70,8 @@ if __name__ == "__main__":
         #MyWS2812.do_blink_test()
         #print("WS2812 -> Dot-Test")
         #MyWS2812.do_dot_test()
+    else:
+        print("WS2812 -> nicht vorhanden")
 
     if MyModule.inc_decoder:
         print("Decode -> Load-Module")
@@ -77,6 +81,8 @@ if __name__ == "__main__":
         ### Test ###
         #print("Decode -> Test")
         #MyDecode.decode_input("Test")
+    else:
+        print("Decode -> nicht vorhanden")
 
     if MyModule.inc_serial:
         print("Serial-COM -> Load-Module")
@@ -86,6 +92,8 @@ if __name__ == "__main__":
         ### Test ###
         #print("Serial-Con -> Test")
         #MySerial.sercon_write_out("Start Test")
+    else:
+        print("Serial-COM -> nicht vorhanden")
 
     main()      # Start Main $$$
 
