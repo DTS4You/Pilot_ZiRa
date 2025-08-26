@@ -25,9 +25,6 @@ class PLC:
         return self.state
     
 
-    def set_state_idle(self):
-        self.state = 'IDLE'
-
     def read_input(self):
         # Eingänge vom Benutzer simulieren
         self.inputs['start'] = input("Start-Taster drücken? (ja/nein): ").lower() == 'ja'
@@ -64,7 +61,8 @@ class PLC:
 
 def main():
     plc = PLC()
-    plc.cycle()
+    print(plc.set_state('RUN'))
+    #plc.cycle()
 
 # ###############################################################################
 # ### Main                                                                    ###
