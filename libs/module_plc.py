@@ -60,8 +60,9 @@ class PLC:
                 self.outputs['alarm'] = False
 
 def main():
+    state = 'RUN'
     plc = PLC()
-    print(plc.set_state('RUN'))
+    print(plc.set_state(state))
     #plc.cycle()
 
 # ###############################################################################
