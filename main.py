@@ -4,7 +4,7 @@
 ### Version: 0.99                                  ###
 ### Datum  : 04.08.2025                            ###
 ######################################################
-from machine import Pin, Timer                              # type: ignore
+#from machine import Pin, Timer                              # type: ignore
 from libs.module_init import Global_Module as MyModule
 import time                                                 # type: ignore
 
@@ -16,135 +16,22 @@ time_pause = 1.5
 # ------------------------------------------------------------------------------
 # --- Main Function                                                          ---
 # ------------------------------------------------------------------------------
-# 0 -> Spiegel -> Ring
-# 1 -> Laser Sender
-# 2 -> Laser Empfänger
 
 def main():
 
     print("=== Start Main ===")
     
-
-    MyWS2812.do_all_def()
-
     try:
         print("Start Main Loop")
  
         while (True):
-
-            for i in range(0,2):                    # Laser
-                MyWS2812.set_led_obj(6,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(6,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Boden 1
-                MyWS2812.set_led_obj(0,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(0,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Spiegel / color_half
-                MyWS2812.set_led_obj(5,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(5,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Empfänger
-                MyWS2812.set_led_obj(7,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(7,"def")
-                time.sleep(time_off)
-            #----------------------------------------------------------
-            for i in range(0,2):                    # Laser
-                MyWS2812.set_led_obj(6,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(6,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Boden 2
-                MyWS2812.set_led_obj(1,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(1,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Spiegel
-                MyWS2812.set_led_obj(5,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(5,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Empfänger
-                MyWS2812.set_led_obj(7,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(7,"def")
-                time.sleep(time_off)
-            #----------------------------------------------------------
-            for i in range(0,2):                    # Laser
-                MyWS2812.set_led_obj(6,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(6,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Boden 3
-                MyWS2812.set_led_obj(2,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(2,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Spiegel
-                MyWS2812.set_led_obj(5,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(5,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Empfänger
-                MyWS2812.set_led_obj(7,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(7,"def")
-                time.sleep(time_off)
-            #----------------------------------------------------------
-            for i in range(0,2):                    # Laser
-                MyWS2812.set_led_obj(6,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(6,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Boden 4
-                MyWS2812.set_led_obj(3,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(3,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Spiegel
-                MyWS2812.set_led_obj(5,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(5,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Empfänger
-                MyWS2812.set_led_obj(7,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(7,"def")
-                time.sleep(time_off)
-            #----------------------------------------------------------
-            for i in range(0,2):                    # Laser
-                MyWS2812.set_led_obj(6,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(6,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Boden 5
-                MyWS2812.set_led_obj(4,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(4,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Spiegel
-                MyWS2812.set_led_obj(5,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(5,"def")
-                time.sleep(time_off)
-            for i in range(0,2):                    # Empfänger
-                MyWS2812.set_led_obj(7,"on")
-                time.sleep(time_on)
-                MyWS2812.set_led_obj(7,"def")
-                time.sleep(time_off)
-            #----------------------------------------------------------            
-
+            
             time.sleep(time_pause)
 
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
     finally:
-        print("Exiting the program")
-        MyWS2812.do_all_off()   
+        print("Exiting the program")   
 
     print("=== End of Main ===")
 
@@ -203,6 +90,7 @@ if __name__ == "__main__":
     main()      # Start Main $$$
 
 # Normal sollte das Programm hier nie ankommen !
-print("___ End of Programm ___ -> = STOP =")
+print("___ End of Programm ___")
+print("§§§> !!! STOP !!! <§§§")
 
 # ##############################################################################
