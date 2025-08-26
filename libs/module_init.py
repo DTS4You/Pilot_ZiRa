@@ -9,7 +9,7 @@ class Global_Module:
     inc_decoder         = False
     inc_serial          = False
     inc_i2c             = False
-
+    inc_plc             = True
 
 class Global_WS2812:
 
