@@ -1,18 +1,17 @@
 class PLC:
     def __init__(self):
-        # Eingänge (z.B. Taster, Sensoren)
-        self.inputs = {
+        self.state = 'STOP'                 # Zustand der Steuerung
+        self.step_value = 0                 # Ablaufsteuerung Schrittwert
+        self.step_max = 5                   # Maximale Schritte Anzahl
+        self.inputs = {                     # Eingänge (z.B. Taster, Sensoren)
             'start': False,
             'stop': False,
             'sensor': False
         }
-        # Ausgänge (z.B. Motor, Relais)
-        self.outputs = {
+        self.outputs = {                    # Ausgänge (z.B. Motor, Relais)
             'motor': False,
             'alarm': False
         }
-        # Zustand der Steuerung
-        self.state = 'IDLE'
 
     def set_state(self, state='STOP'):
         if state == 'START':
