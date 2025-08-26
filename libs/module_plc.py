@@ -43,20 +43,7 @@ class PLC:
 
     def logic(self):
         if self.state == 'RUN':
-            if self.inputs['start']:
-                print("Motor startet...")
-                self.outputs['motor'] = True
-                self.state = 'RUNNING'
-        elif self.state == 'RUNNING':
-            if self.inputs['stop']:
-                print("Motor stoppt...")
-                self.outputs['motor'] = False
-                self.state = 'IDLE'
-            elif self.inputs['sensor']:
-                print("Sensor aktiviert! Alarm auslösen.")
-                self.outputs['alarm'] = True
-            else:
-                self.outputs['alarm'] = False
+            print("PLC -> RUN")
 
 def main():
     state = 'RUN'
