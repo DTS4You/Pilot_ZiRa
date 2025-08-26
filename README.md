@@ -90,3 +90,6 @@ State:
             -> Timer 2 Sekunden starten
 
     6   ## Tonausgane ; Tor auf / zu
+
+    7   ## Alles auf Start
+    
