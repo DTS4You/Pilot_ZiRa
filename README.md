@@ -35,6 +35,12 @@ J308 -> Q 0.7	-> Elektromagnet Ausgabe	-> Stromlos Türe öffnet -> über Relais
 J201 -> Pin 0   -> Audio-Ausgang über PWM
 J201 -> Pin 1   -> Audio-Ausgang über PWM
 #------------------------------------------------------------------------------
+Taster-Belegung:
+Schliesser  -> Grün - Grün
+Öffner      -> Blau - Blau
+LED rot     -> Rot - Schwarz
+LED grün    -> Rot - Schwarz
+#------------------------------------------------------------------------------
 --- Beschreibung:
 State:
     0   ## Nach dem Einschalten
