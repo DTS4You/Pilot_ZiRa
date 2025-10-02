@@ -14,10 +14,10 @@ J407 -> Pin 8
 J408 -> Pin 9	-> LED-Stripe	-> Co2 Ausstoß Anzeige Balken
 #------------------------------------------------------------------------------
 ------ IO-Belegung:
-J301 -> I 0.0	-> Taster vorne 			-> Schliesser           -> Pull-Down, aktiv high
-J302 -> I 0.1	-> Taster vorne 			-> Öffner               -> Pull-Down, aktiv low
-J303 -> I 0.2	-> Taster hinten			-> Schliesser           -> Pull-Down, aktiv high
-J304 -> I 0.3	-> Taster hinten			-> Öffner               -> Pull-Down, aktiv low
+J301 -> I 0.0	-> Taster vorne 			-> Öffner               -> Pull-Down, aktiv low
+J302 -> I 0.1	-> Taster vorne 			-> Schliesser           -> Pull-Down, aktiv high
+J303 -> I 0.2	-> Taster hinten			-> Öffner               -> Pull-Down, aktiv low
+J304 -> I 0.3	-> Taster hinten			-> Schliesser           -> Pull-Down, aktiv high
 J305 -> I 0.4	-> Reed-Kontakt				-> Position Grün        -> Pull-Down, aktiv high
 J306 -> I 0.5	-> Reed-Kontakt				-> Position Rot         -> Pull-Down, aktiv high
 J307 -> I 0.6
@@ -29,8 +29,8 @@ J303 -> Q 0.2	-> Taster LED hinten		-> Grüne LED
 J304 -> Q 0.3	-> Taster LED vorne			-> Rote LED
 J305 -> Q 0.4
 J306 -> Q 0.5
-J307 -> Q 0.6
-J308 -> Q 0.7	-> Elektromagnet Ausgabe	-> Stromlos Türe öffnet -> über Relaismodul
+J307 -> Q 0.6   -> Windräder                -> StepDown 0,8V
+J308 -> Q 0.7	-> Elektromagnet Ausgabe	-> High -> Stromlos Türe öffnet -> über Relaismodul Öffner
 #------------------------------------------------------------------------------
 J201 -> Pin 0   -> Audio-Ausgang über PWM
 J201 -> Pin 1   -> Audio-Ausgang über PWM
