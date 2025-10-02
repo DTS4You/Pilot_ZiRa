@@ -4,14 +4,14 @@
 --- Hardware:
 #------------------------------------------------------------------------------
 ------LED-Belegung:
-J401 -> Pin 2	-> LED-Stripe	-> Gitter-Rahmen
-J402 -> Pin 3
-J403 -> Pin 4
-J404 -> Pin 5
-J405 -> Pin 6
-J406 -> Pin 7
-J407 -> Pin 8
-J408 -> Pin 9	-> LED-Stripe	-> Co2 Ausstoß Anzeige Balken
+J401 -> Pin 2	-> LED-Stripe	-> Gitter-Rahmen Horizontal 2 x parallel
+J402 -> Pin 3   -> LED-Stripe   -> Gitter-Rahmen Vertikal   4 x parallel
+J403 -> Pin 4   -> LED-Stripe   -> Co2 Ausstoß Anzeige Balken
+J404 -> Pin 5   -> LED-Stripe   -> Energie -> Kohlehaufen
+J405 -> Pin 6   -> LED-Stripe   -> Energie -> Windrad 1
+J406 -> Pin 7   -> LED-Stripe   -> Energie -> Windrad 2
+J407 -> Pin 8   -> ---frei---
+J408 -> Pin 9	-> ---frei---
 #------------------------------------------------------------------------------
 ------ IO-Belegung:
 J301 -> I 0.0	-> Taster vorne 			-> Öffner               -> Pull-Down, aktiv low
