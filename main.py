@@ -8,9 +8,14 @@ from libs.module_init import Global_Module as MyModule
 from time import sleep                     # type: ignore
 
 
-time_on    = 0.3
-time_off   = 0.4
-time_pause = 1.5
+TASTER_VORNE    = 0b00000010
+TASTER_HINTEN   = 0b00001000
+KONTAKT_RED     = 0b00010000
+KONTAKT_GREEN   = 0b00100000
+
+def set_led_to_color(color):
+    for i in range(5):
+        MyWS2812.set_led_obj(i, color)
 
 # ------------------------------------------------------------------------------
 # --- Main Function                                                          ---
@@ -23,15 +28,27 @@ def main():
     try:
         print("Start Main Loop")
  
-        MyWS2812.set_led_obj(0,"def")
-        MyWS2812.set_led_obj(1,"def")
-        MyWS2812.set_led_obj(2,"def")
-        MyWS2812.set_led_obj(3,"def")
-        MyWS2812.set_led_obj(4,"def")
+        set_led_to_color("def")
+
+        gpio = MyGPIO.GPIO()
         
         while (True):
+
+            value_io = gpio.get_input()
+            #print(bin(value_io))
+            #gpio.set_output(value_io)
+            if value_io & TASTER_VORNE:
+                pass
             
-            sleep(0.3)
+            if value_io & TASTER_HINTEN:
+                if value_io & KONTAKT_GREEN:
+                    set_led_to_color("green")
+                elif value_io & KONTAKT_RED:
+                    set_led_to_color("red")
+                else:
+                    set_led_to_color("def")
+            
+            sleep(0.2)
 
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
@@ -48,19 +65,12 @@ def main():
 # ###############################################################################
 
 if __name__ == "__main__":
-
-    if MyModule.inc_i2c:
-        print("I2C_MCP23017 -> Load-Module")
-        import libs.module_i2c as MyGPIO
-        #print("I2C -> Setup")
-        MyGPIO.i2c_setup()
-        ### Test ###
-        print("I2C -> SetOutput")
-        MyGPIO.i2c_write(0,True)
-        time.sleep(0.5)
-        MyGPIO.i2c_write(0,False)
+    
+    if MyModule.inc_gpio:
+        print("I2C_GPIO -> Load-Module")
+        import libs.module_gpio as MyGPIO
     else:
-        print("I2C_MCP23017 -> nicht vorhanden")
+        print("I2C_GPIO -> nicht vorhanden")
 
     if MyModule.inc_ws2812:
         print("WS2812 -> Load-Module")
