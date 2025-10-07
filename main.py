@@ -23,6 +23,12 @@ def main():
     try:
         print("Start Main Loop")
  
+        MyWS2812.set_led_obj(0,"def")
+        MyWS2812.set_led_obj(1,"def")
+        MyWS2812.set_led_obj(2,"def")
+        MyWS2812.set_led_obj(3,"def")
+        MyWS2812.set_led_obj(4,"def")
+        
         while (True):
             
             sleep(0.3)
@@ -62,8 +68,8 @@ if __name__ == "__main__":
         #print("WS2812 -> Setup")
         MyWS2812.setup_ws2812()
         ### Test ###
-        #print("WS2812 -> Run self test")
-        #MyWS2812.self_test()
+        print("WS2812 -> Run self test")
+        MyWS2812.self_test()
     else:
         print("WS2812 -> nicht vorhanden")
 
