@@ -18,15 +18,24 @@ class GPIO:
         self.inputs = 0x00
         self.outputs = 0x00
 
-    def get_input(self):
+    def get_input_byte(self):
         self.inputs = int.from_bytes(self.mcp._read(0x13, 1), 'big')
         return self.inputs
 
-    def set_output(self, value=None):
+    def set_output_byte(self, value=None):
         if not value == None:
             self.outputs = value
         self.mcp._write([0x12, self.outputs])
         return self.outputs
+    
+    def set_output_bit(self, bit, value):
+        if value == True:
+            self.outputs = self.outputs | ( 1 << bit)
+        else:
+            self.outputs = self.outputs & ( 0 << bit)
+        self.mcp._write([0x12, self.outputs])
+        return self.outputs
+
 
 
 
@@ -42,8 +51,8 @@ def main():
 
         while(True):
 
-            value_io = gpio.get_input()
-            gpio.set_output(value_io)
+            value_io = gpio.get_input_byte()
+            gpio.set_output_byte(value_io)
             sleep(0.2)
     except KeyboardInterrupt:
         print("Keyboard Interrupt")
