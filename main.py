@@ -12,6 +12,8 @@ TASTER_VORNE    = 0b00000010
 TASTER_HINTEN   = 0b00001000
 KONTAKT_RED     = 0b00010000
 KONTAKT_GREEN   = 0b00100000
+OUT_WINRAD      = 0b01000000
+OUT_MAGNET      = 0b10000000
 
 def set_led_to_color(color):
     for i in range(5):
@@ -43,6 +45,7 @@ def main():
             if value_io & TASTER_HINTEN:
                 if value_io & KONTAKT_GREEN:
                     set_led_to_color("green")
+                    gpio.set_output(OUT_WINRAD)
                 elif value_io & KONTAKT_RED:
                     set_led_to_color("red")
                 else:
