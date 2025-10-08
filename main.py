@@ -33,10 +33,6 @@ def main():
         set_led_to_color("def")
 
         gpio = MyGPIO.GPIO()
-
-        gpio.set_output_bit(0, "On")
-        sleep(1)
-        gpio.set_output_bit(0, "Off")
         
         while (True):
 
@@ -49,7 +45,7 @@ def main():
             if value_io & TASTER_HINTEN:
                 if value_io & KONTAKT_GREEN:
                     print("Green")
-                    gpio.set_output_bit(0, "On")
+                    gpio.set_output_bit(OUT_WINRAD, "On")
                     set_led_to_color("green")
                 elif value_io & KONTAKT_RED:
                     print("Red")
