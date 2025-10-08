@@ -76,7 +76,7 @@ def main():
                     gpio.set_output_bit(OUT_MAGNET, "On")
                     gpio.set_output_bit(OUT_WINRAD, "Off")
                     state_value = 3
-                    sleep(1)
+                    sleep(2)
                     gpio.set_output_bit(OUT_MAGNET, "Off")
                     set_led_to_color("def")
                     
@@ -86,7 +86,7 @@ def main():
                     sound.play_sound("red")
                     gpio.set_output_bit(OUT_WINRAD, "Off")
                     state_value = 3
-                    sleep(1)
+                    sleep(2)
                     set_led_to_color("def")
         
             if state_value == 3:
