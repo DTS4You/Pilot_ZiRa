@@ -12,8 +12,10 @@ TASTER_VORNE    = 0b00000010
 TASTER_HINTEN   = 0b00001000
 KONTAKT_RED     = 0b00100000
 KONTAKT_GREEN   = 0b00010000
-OUT_WINRAD      = 6
-OUT_MAGNET      = 7
+OUT_TASTER_VORNE_GREEN  = 0
+OUT_TASTER_VORNE_RED    = 1
+OUT_WINRAD              = 6
+OUT_MAGNET              = 7
 
 def set_led_to_color(color):
     for i in range(5):
@@ -26,35 +28,77 @@ def set_led_to_color(color):
 def main():
 
     print("=== Start Main ===")
-    
+
+    state_value     = 0
+
     try:
         print("Start Main Loop")
  
         set_led_to_color("def")
 
         gpio = MyGPIO.GPIO()
+
+        sound = MySound.PWM_SOUND(0,1)
+
+        sound.play_off()
         
         while (True):
 
             value_io = gpio.get_input_byte()
-            #print(bin(value_io))
-            #gpio.set_output(value_io)
-            if value_io & TASTER_VORNE:
-                pass
             
-            if value_io & TASTER_HINTEN:
-                if value_io & KONTAKT_GREEN:
-                    print("Green")
-                    gpio.set_output_bit(OUT_WINRAD, "On")
-                    set_led_to_color("green")
-                elif value_io & KONTAKT_RED:
-                    print("Red")
+            if state_value < 3:
+                if value_io & TASTER_HINTEN:
+                    if value_io & KONTAKT_GREEN:
+                        print("Green")
+                        gpio.set_output_bit(OUT_WINRAD, "On")
+                        set_led_to_color("green")
+                        gpio.set_output_bit(OUT_TASTER_VORNE_GREEN, "On")
+                        gpio.set_output_bit(OUT_TASTER_VORNE_RED, "Off")
+                        state_value = 1
+                    elif value_io & KONTAKT_RED:
+                        print("Red")
+                        gpio.set_output_bit(OUT_WINRAD, "Off")
+                        set_led_to_color("red")
+                        gpio.set_output_bit(OUT_TASTER_VORNE_GREEN, "Off")
+                        gpio.set_output_bit(OUT_TASTER_VORNE_RED, "On")
+                        state_value = 2
+                    else:
+                        print("Default")
+                        gpio.set_output_bit(OUT_WINRAD, "Off")
+                        set_led_to_color("def")
+                        gpio.set_output_bit(OUT_TASTER_VORNE_GREEN, "Off")
+                        gpio.set_output_bit(OUT_TASTER_VORNE_RED, "Off")
+                        state_value = 0
+
+            if state_value == 1:
+                if value_io & TASTER_VORNE:
+                    sound.play_sound("green")
+                    gpio.set_output_bit(OUT_MAGNET, "On")
                     gpio.set_output_bit(OUT_WINRAD, "Off")
-                    set_led_to_color("red")
-                else:
-                    print("Default")
-                    gpio.set_output_bit(OUT_WINRAD, "Off")
+                    state_value = 3
+                    sleep(1)
+                    gpio.set_output_bit(OUT_MAGNET, "Off")
                     set_led_to_color("def")
+                    
+
+            if state_value == 2:
+                if value_io & TASTER_VORNE:
+                    sound.play_sound("red")
+                    gpio.set_output_bit(OUT_WINRAD, "Off")
+                    state_value = 3
+                    sleep(1)
+                    set_led_to_color("def")
+        
+            if state_value == 3:
+                #if value_io & TASTER_HINTEN:
+                if True:
+                    gpio.set_output_bit(OUT_WINRAD, "Off")
+                    gpio.set_output_bit(OUT_MAGNET, "Off")
+                    set_led_to_color("def")
+                    gpio.set_output_bit(OUT_TASTER_VORNE_GREEN, "Off")
+                    gpio.set_output_bit(OUT_TASTER_VORNE_RED, "Off")
+                    sleep(1)
+                    state_value = 0
             
             sleep(0.2)
 
@@ -90,6 +134,12 @@ if __name__ == "__main__":
         MyWS2812.self_test()
     else:
         print("WS2812 -> nicht vorhanden")
+
+    if MyModule.inc_sound:
+        print("Sound -> Load-Module")
+        import libs.module_sound as MySound
+    else:
+        print("Sound -> nicht vorhanden")
 
     if MyModule.inc_decoder:
         print("Decode -> Load-Module")

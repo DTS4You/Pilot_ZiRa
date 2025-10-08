@@ -3,8 +3,8 @@
 # Version   : 1.00
 #------------------------------------------------------------------------------
 
-from machine import Pin, PWM
-from utime import sleep
+from machine import Pin, PWM        # type: ignore
+from time import sleep
 
 class PWM_SOUND:
     def __init__(self, PWN_PIN_1, PWN_PIN_2):

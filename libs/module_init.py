@@ -10,6 +10,7 @@ class Global_Module:
     inc_serial          = False
     inc_gpio            = True
     inc_plc             = False
+    inc_sound           = True
 
 class Global_WS2812:
 
