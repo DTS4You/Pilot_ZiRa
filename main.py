@@ -12,8 +12,8 @@ TASTER_VORNE    = 0b00000010
 TASTER_HINTEN   = 0b00001000
 KONTAKT_RED     = 0b00100000
 KONTAKT_GREEN   = 0b00010000
-OUT_WINRAD      = 0b01000000
-OUT_MAGNET      = 0b10000000
+OUT_WINRAD      = 6
+OUT_MAGNET      = 7
 
 def set_led_to_color(color):
     for i in range(5):
@@ -33,10 +33,14 @@ def main():
         set_led_to_color("def")
 
         gpio = MyGPIO.GPIO()
+
+        gpio.set_output_bit(0, "On")
+        sleep(1)
+        gpio.set_output_bit(0, "Off")
         
         while (True):
 
-            value_io = gpio.get_input()
+            value_io = gpio.get_input_byte()
             #print(bin(value_io))
             #gpio.set_output(value_io)
             if value_io & TASTER_VORNE:
@@ -44,11 +48,16 @@ def main():
             
             if value_io & TASTER_HINTEN:
                 if value_io & KONTAKT_GREEN:
+                    print("Green")
+                    gpio.set_output_bit(0, "On")
                     set_led_to_color("green")
-                    gpio.set_output(OUT_WINRAD)
                 elif value_io & KONTAKT_RED:
+                    print("Red")
+                    gpio.set_output_bit(OUT_WINRAD, "Off")
                     set_led_to_color("red")
                 else:
+                    print("Default")
+                    gpio.set_output_bit(OUT_WINRAD, "Off")
                     set_led_to_color("def")
             
             sleep(0.2)
