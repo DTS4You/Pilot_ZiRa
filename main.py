@@ -52,6 +52,7 @@ def main():
                         print("Green")
                         gpio.set_output_bit(OUT_WINRAD, "On")
                         set_led_to_color("green")
+                        MyWS2812.set_led_obj(4, "def")
                         gpio.set_output_bit(OUT_TASTER_VORNE_GREEN, "On")
                         gpio.set_output_bit(OUT_TASTER_VORNE_RED, "Off")
                         state_value = 1
@@ -59,6 +60,7 @@ def main():
                         print("Red")
                         gpio.set_output_bit(OUT_WINRAD, "Off")
                         set_led_to_color("red")
+                        MyWS2812.set_led_obj(3, "def")
                         gpio.set_output_bit(OUT_TASTER_VORNE_GREEN, "Off")
                         gpio.set_output_bit(OUT_TASTER_VORNE_RED, "On")
                         state_value = 2
